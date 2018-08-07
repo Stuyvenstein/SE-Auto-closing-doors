@@ -84,6 +84,7 @@
                     //Find open doors that aren't yet flagged for auto-closing
                     if (autoDoor.doorRef?.Status == (DoorStatus.Open | DoorStatus.Opening) && !autoDoor.IsTiming)
                     {
+                        //Flag door for auto-closing
                         autoDoor.IsTiming = true;
                         autoDoor.TimeOpened = DateTime.Now;
                     }
@@ -99,8 +100,10 @@
                     }
 
                     //Handle manually closed doors
-                    if (autoDoor.doorRef?.Status == (DoorStatus.Closed | DoorStatus.Closed) && autoDoor.IsTiming) autoDoor.IsTiming = false;
+                    if (autoDoor.doorRef?.Status == (DoorStatus.Closed | DoorStatus.Closing) && autoDoor.IsTiming) autoDoor.IsTiming = false;
                 }
+
+                //This script runs every 10 ticks, and we want to update the door list every 300 ticks, hence the below
                 if (ElapsedTicks == 30)
                 {
                     UpdateDoorList();
