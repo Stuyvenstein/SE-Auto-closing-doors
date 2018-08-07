@@ -1,5 +1,4 @@
 # SE-Auto-closing-doors
-This is a script for Space Engineers that automatically closes doors after a specified period of being open.
 
 This script can be used as-is, and it is simple to understand and modify. Simply upload it to a Programmable block and compile. (No timer block needed)
 
